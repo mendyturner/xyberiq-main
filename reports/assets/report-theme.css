@@ -1,0 +1,130 @@
+/* XyberIQ Report Theme – Dark-first with Light/Print fallbacks */
+:root{
+  --electric:#0072FF;       /* brand blue */
+  --aqua:#00E0FF;           /* brand aqua */
+  --success:#1dd1a1;
+  --warn:#ffcc00;
+  --danger:#ff6b6b;
+  --radius:14px;
+
+  /* Dark default */
+  --bg:#0A0F1E;             /* page background */
+  --panel:#0F162D;          /* card surface */
+  --panel-2:#101838;        /* alt surface */
+  --text:#E8EEFF;           /* primary text */
+  --muted:#A0ACD2;          /* secondary text */
+  --line:#1B2342;           /* borders */
+  --chip:#0c1228;           /* badges/pills */
+  --shadow:0 28px 48px rgba(2,8,28,.45);
+}
+
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f7faff;
+    --panel:#ffffff;
+    --panel-2:#f3f6ff;
+    --text:#0b1221;
+    --muted:#47507a;
+    --line:#dfe5ff;
+    --chip:#eef3ff;
+    --shadow:0 14px 34px rgba(4,22,65,.10);
+  }
+}
+
+/* Optional manual override via [data-theme] */
+:root[data-theme="dark"]{
+  --bg:#0A0F1E; --panel:#0F162D; --panel-2:#101838;
+  --text:#E8EEFF; --muted:#A0ACD2; --line:#1B2342; --chip:#0c1228; --shadow:0 28px 48px rgba(2,8,28,.45);
+}
+:root[data-theme="light"]{
+  --bg:#f7faff; --panel:#ffffff; --panel-2:#f3f6ff;
+  --text:#0b1221; --muted:#47507a; --line:#dfe5ff; --chip:#eef3ff; --shadow:0 14px 34px rgba(4,22,65,.10);
+}
+
+/* Page base */
+html{color-scheme: dark light}
+body{
+  margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: radial-gradient(1200px 600px at 10% -10%, #13204a 0%, var(--bg) 45%) , var(--bg);
+  color:var(--text);
+}
+.container{max-width:960px;margin:0 auto;padding:28px}
+
+/* Header */
+.report-head{
+  display:flex; justify-content:space-between; align-items:center; gap:16px;
+  background:linear-gradient(180deg, var(--panel), var(--panel-2));
+  border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px; box-shadow:var(--shadow);
+}
+.brand{
+  display:flex; align-items:center; gap:12px;
+}
+.brand-mark{
+  width:40px;height:40px;border-radius:12px;flex:none;
+  background:conic-gradient(from 180deg, var(--electric), var(--aqua), var(--electric));
+  box-shadow:0 8px 22px rgba(0,114,255,.35);
+}
+.brand-title{font-weight:800;font-size:18px;letter-spacing:.2px}
+
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--chip); border:1px solid var(--line); color:var(--muted);
+  padding:8px 12px; border-radius:999px; font-weight:700; font-size:12px;
+}
+.badge .dot{width:8px;height:8px;border-radius:999px;background:var(--aqua);box-shadow:0 0 0 3px rgba(0,224,255,.15)}
+
+/* Sections / Cards */
+.section{margin-top:18px}
+.card{
+  background:linear-gradient(180deg, var(--panel), var(--panel-2));
+  border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px; box-shadow:var(--shadow);
+}
+.card h2{margin:0 0 10px;font:800 18px/1.2 Inter}
+.card p{margin:0;color:var(--muted)}
+
+/* KPI grid */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.kpi{
+  background:var(--chip); border:1px solid var(--line); border-radius:12px; padding:12px 14px
+}
+.kpi .label{font-size:12px;color:var(--muted)}
+.kpi .value{font-weight:900;font-size:20px}
+
+/* Progress / Score bar */
+.progress{height:12px;border-radius:999px;background:#0b1430;border:1px solid var(--line);overflow:hidden}
+.progress > span{display:block;height:100%;background:linear-gradient(90deg,var(--electric),var(--aqua))}
+
+/* Tables */
+.table{
+  width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border:1px solid var(--line); border-radius:12px;
+}
+.table th,.table td{padding:12px 14px;text-align:left}
+.table thead th{
+  background:linear-gradient(180deg,var(--panel-2),var(--panel));
+  color:var(--muted); font-weight:800; border-bottom:1px solid var(--line)
+}
+.table tbody tr+tr td{border-top:1px solid var(--line)}
+.sev-high{color:#ff7b7b;font-weight:800}
+.sev-med{color:#ffd166;font-weight:800}
+.sev-low{color:#7dffcf;font-weight:800}
+
+/* Callouts */
+.callout{
+  border-left:4px solid var(--electric); background:rgba(0,114,255,.06);
+  border-radius:10px; padding:12px 14px; color:var(--muted)
+}
+
+/* Footer */
+.footer{margin:22px 0 8px;color:var(--muted);text-align:center;font-size:12px}
+
+/* Print to PDF: force light background + black text for clarity */
+@media print{
+  :root{ color-scheme: light }
+  body{ background:#fff !important; color:#111 !important }
+  .report-head,.card{ box-shadow:none; background:#fff; border:1px solid #d9e2ff }
+  .badge{ background:#eef3ff; border-color:#d9e2ff; color:#223; }
+  .kpi{ background:#f5f8ff; border-color:#d9e2ff; }
+  .progress{ background:#eee; border-color:#ddd }
+  .table thead th{ background:#f3f6ff; color:#223; border-color:#d9e2ff }
+  .callout{ background:#f5fbff; border-left-color:#0072FF }
+}
