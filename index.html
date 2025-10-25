@@ -3,266 +3,183 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Cybersecurity Compliance Platform | XyberIQ</title>
-  <meta name="description" content="Assess risk, train staff, and prove readiness for HIPAA and CMMC with one intelligent compliance platform." />
-  <link rel="canonical" href="https://xyberiq.io/" />
-  <meta name="robots" content="index,follow" />
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="XyberIQ — Compliance Made Intelligent" />
-  <meta property="og:description" content="From complexity to clarity: assess, train, and prove compliance readiness." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://xyberiq.io/" />
-  <meta property="og:image" content="https://xyberiq.io/assets/logo.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="XyberIQ — Compliance Made Intelligent" />
-  <meta name="twitter:description" content="Assess, train, and prove HIPAA & CMMC readiness." />
-  <meta name="twitter:image" content="https://xyberiq.io/assets/xyberiq-og-1200x630.png" />
-
-  <!-- JSON-LD: SoftwareApplication -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"SoftwareApplication",
-    "name":"XyberIQ",
-    "applicationCategory":"SecurityApplication",
-    "operatingSystem":"Web",
-    "url":"https://xyberiq.io/",
-    "description":"XyberIQ automates HIPAA and CMMC compliance — assess, train, and prove readiness in one platform.",
-    "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
-  }
-  </script>
-
-  <!-- JSON-LD: SoftwareCollection (links HIPAA/CMMC products) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"SoftwareCollection",
-    "name":"XyberIQ Compliance Suite",
-    "url":"https://xyberiq.io/",
-    "description":"XyberIQ is an intelligent compliance platform featuring HIPAA and CMMC readiness solutions.",
-    "publisher":{"@type":"Organization","name":"XyberIQ","url":"https://xyberiq.io/"},
-    "hasPart":[
-      {"@type":"SoftwareApplication","name":"XyberIQ — HIPAA Readiness","url":"https://hipaa.xyberiq.io/","applicationCategory":"SecurityApplication","operatingSystem":"Web"},
-      {"@type":"SoftwareApplication","name":"XyberIQ — CMMC Readiness","url":"https://cmmc.xyberiq.io/","applicationCategory":"SecurityApplication","operatingSystem":"Web"}
-    ]
-  }
-  </script>
-
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <title>XyberIQ — Compliance training that doesn’t feel like homework</title>
+  <meta name="description" content="XyberIQ turns HIPAA/CMMC readiness into a fast, guided flow—assess, get gaps, fix what matters." />
+  <meta name="color-scheme" content="light">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --electric:#0072FF; --aqua:#00E0FF; --ink:#0B1221; --night:#0A0F1A; --slate:#6b7280;
-      --panel:#F6F9FF; --bg:#FFFFFF; --ok:#10B981; --warn:#F59E0B; --bad:#EF4444;
-      --radius:16px;
+      /* Brand tokens reused from your assessment/report packs */
+      --electric:#0072FF; /* electric blue */
+      --aqua:#00E0FF;     /* aqua */
+      --ink:#0B1221;      /* near-black */
+      --muted:#6b7280;    /* slate */
+      --panel:#F6F9FF;
+      --bg:#0A0F1E;       /* dark backdrop for drama */
+      --card:#0F162DCC;   /* glass */
+      --border:#20263D;
+      --white:#fff;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--ink);background:var(--bg)}
-    a{color:var(--electric);text-decoration:none}
-    a:focus-visible,button:focus-visible{outline:2px solid var(--aqua);outline-offset:2px}
-    .container{max-width:1120px;margin:0 auto;padding:24px}
-
-    /* Header */
-    header.site{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.2) blur(6px);
-      background:linear-gradient(180deg, rgba(10,15,26,.9), rgba(10,15,26,.65) 60%, rgba(10,15,26,0));
-      border-bottom:1px solid rgba(255,255,255,.08); color:#fff}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px;color:#fff}
-    .mark{width:36px;height:36px;border-radius:10px;box-shadow:0 8px 30px rgba(0,114,255,.35);
-      background:conic-gradient(from 200deg at 50% 50%, var(--electric), var(--aqua), var(--electric));}
-    .wordmark{font-weight:800;letter-spacing:.2px}
-    .nav a{color:#fff;opacity:.9}
-    .btn{display:inline-block;border:1px solid rgba(255,255,255,.14);padding:12px 16px;border-radius:12px;font-weight:800}
-    .btn-gradient{background:linear-gradient(90deg,var(--electric),var(--aqua));border:0;color:#fff}
-    .btn-ghost{background:transparent;color:#fff}
+    html,body{height:100%}
+    body{
+      margin:0;background:radial-gradient(1200px 600px at 10% -10%, #13204a 0%, #090f1f 45%, #070b17 100%), var(--bg);
+      color:#e8eeff;font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1120px;margin:0 auto;padding:24px}
+    /* Nav */
+    .nav{
+      position:sticky;top:0;z-index:20;
+      backdrop-filter: blur(10px);
+      background:linear-gradient(0deg, #0c1225aa, #0c1225aa);
+      border-bottom:1px solid #141a30;
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .mark{
+      width:34px;height:34px;border-radius:10px;flex:none;
+      background:conic-gradient(from 180deg at 50% 50%, var(--electric), var(--aqua), var(--electric));
+      box-shadow:0 6px 18px rgba(0,114,255,.35);
+    }
+    .word{font:800 18px/1 Poppins, Inter;color:#dfe6ff;letter-spacing:.2px}
+    .nav a.btn{padding:10px 14px;border-radius:12px;font-weight:800;background:linear-gradient(90deg,var(--electric),var(--aqua));color:#fff}
+    .nav a.link{color:#a9b2d0;padding:8px 10px;border-radius:10px}
+    .nav a.link:hover{background:#121a34}
 
     /* Hero */
-    .hero{position:relative;color:#fff;background:
-      radial-gradient(800px 400px at 30% 10%, rgba(0,114,255,.30), transparent 60%),
-      radial-gradient(700px 380px at 80% 20%, rgba(0,224,255,.26), transparent 60%),
-      linear-gradient(180deg, #0A0F1A, #0B1221 60%, #0B1221 100%);
-      padding:96px 0 72px; overflow:hidden}
-    .headline{font-size:40px;line-height:1.05;margin:8px 0 10px;font-weight:900}
-    .sub{max-width:760px;color:rgba(255,255,255,.86);font-size:18px}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .trust{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-top:18px;color:rgba(255,255,255,.72)}
-    .trust .dot{width:6px;height:6px;border-radius:999px;background:rgba(255,255,255,.28)}
+    .hero{position:relative;overflow:hidden;padding:94px 0 40px}
+    .orb{
+      position:absolute;inset:-200px -200px auto auto;width:520px;height:520px;border-radius:999px;filter:blur(60px) saturate(120%);
+      background:
+        radial-gradient(200px 200px at 70% 40%, rgba(0,224,255,.35), transparent 60%),
+        conic-gradient(from 180deg at 50% 50%, rgba(0,114,255,.45), rgba(0,224,255,.4), rgba(0,114,255,.45));
+      animation:float 12s ease-in-out infinite;
+      opacity:.75;pointer-events:none;
+    }
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-18px)}100%{transform:translateY(0)}}
 
-    /* Sections */
-    section{padding:64px 0}
-    h2{font-size:28px;margin:0 0 8px}
-    p.lead{font-size:18px;color:#1f2937;max-width:820px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{background:#fff;border:1px solid #e5e7eb;border-radius:var(--radius);padding:18px}
-    .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .pillar{background:var(--panel);border:1px solid #e5efff;border-radius:var(--radius);padding:18px}
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .step{background:#fff;border:1px solid #e5e7eb;border-radius:var(--radius);padding:16px}
-    .step .n{font-weight:900;font-size:12px;letter-spacing:.12em;color:var(--electric)}
-    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px}
-    .kpi{background:#fff;border:1px solid #e5e7eb;border-radius:var(--radius);padding:16px;text-align:center}
-    .kpi .v{font-size:28px;font-weight:900}
-    .quote{margin-top:16px;background:#fff;border:1px solid #e5e7eb;border-radius:var(--radius);padding:16px}
-    .logos{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
-    .logo{border:1px dashed #d1d5db;border-radius:12px;padding:10px 14px;color:#6b7280;background:#fff}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .eyebrow{color:#8fbaff;font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:12px}
+    .h1{font:800 44px/1.05 Poppins, Inter;color:#f6f9ff;margin:10px 0 12px}
+    .lead{color:#b8c3e3;font-size:18px}
+    .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .btn-primary{background:linear-gradient(90deg,var(--electric),var(--aqua));color:#fff;padding:14px 18px;border:0;border-radius:14px;font-weight:800;cursor:pointer}
+    .btn-ghost{background:#0d142b;border:1px solid #1a2343;color:#dbe5ff;padding:14px 16px;border-radius:14px;font-weight:800}
+    .panel{
+      background:linear-gradient(180deg, #0f162d, #0f162d) padding-box;
+      border:1px solid var(--border);border-radius:16px;padding:16px;
+      box-shadow:0 20px 40px rgba(2,8,28,.35);
+    }
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .kpi{background:#0c1225;border:1px solid #19203a;border-radius:12px;padding:12px}
+    .kpi .label{font-size:12px;color:#8ea0c8}
+    .kpi .value{font-weight:800;font-size:20px}
 
-    /* Closing (dark) */
-    .closing{color:#fff;background:
-      radial-gradient(700px 320px at 20% 10%, rgba(0,224,255,.20), transparent 60%),
-      radial-gradient(800px 420px at 80% 0%, rgba(0,114,255,.18), transparent 60%),
-      linear-gradient(180deg,#0B1221,#0A0F1A); text-align:center;padding:72px 0 80px}
-    .closing h2{color:#fff} .closing p{color:rgba(255,255,255,.85)}
-    footer{color:#cbd5e1;background:#0A0F1A;border-top:1px solid rgba(255,255,255,.08)}
-    footer .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 0}
+    /* Features */
+    .section{padding:56px 0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:linear-gradient(180deg,#101838,#0e152f);border:1px solid #1b2342;border-radius:16px;padding:18px}
+    .card h3{margin:6px 0 6px;font:800 18px/1.2 Inter}
+    .card p{margin:0;color:#b8c3e3;font-size:14px}
 
-    @media (max-width:960px){ .grid,.pillars,.steps{grid-template-columns:1fr 1fr} .kpis{grid-template-columns:1fr} }
-    @media (max-width:640px){ .grid,.pillars,.steps{grid-template-columns:1fr} .headline{font-size:34px} }
+    /* How it works */
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .step{background:linear-gradient(180deg,#101838,#0e152f);border:1px solid #1b2342;border-radius:16px;padding:18px}
+    .step .n{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:9px;
+      background:linear-gradient(90deg,var(--electric),var(--aqua));color:#001534;font-weight:900;margin-bottom:8px}
+
+    /* Footer */
+    footer{color:#8da0c8;border-top:1px solid #141a30;padding:22px 0;margin-top:40px;font-size:12px;text-align:center}
+
+    @media (max-width:920px){
+      .hero-grid{grid-template-columns:1fr}
+      .cards,.steps,.kpis{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
-  <a class="skip" href="#main" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">Skip to content</a>
-
-  <!-- HEADER -->
-  <header class="site">
-    <div class="container nav" aria-label="Global">
-      <div class="brand" aria-label="XyberIQ">
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-inner wrap">
+      <div class="brand">
         <div class="mark" aria-hidden="true"></div>
-        <div class="wordmark">XyberIQ</div>
+        <div class="word">XyberIQ</div>
       </div>
-      <nav class="links" aria-label="Primary">
-        <a href="#how">How it works</a>
-        <a href="#why">Why XyberIQ</a>
-        <a href="#integrations">Integrations</a>
-        <a href="#cta" class="btn btn-ghost">Try Free</a>
-      </nav>
+      <div style="display:flex;gap:8px;align-items:center">
+        <a class="link" href="#features">Features</a>
+        <a class="link" href="#how">How it works</a>
+        <a class="btn" href="/assessment_hipaa/index.html">Get Started</a>
+      </div>
     </div>
-  </header>
+  </div>
 
   <!-- HERO -->
-  <section class="hero" role="region" aria-label="Hero">
-    <div class="container">
-      <div style="color:rgba(255,255,255,.78);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px">From Complexity to Clarity</div>
-      <h1 class="headline">Compliance. Simplified, Verified, Intelligent.</h1>
-      <p class="sub">XyberIQ transforms cybersecurity and compliance from chaos to clarity — one smart platform to <strong>assess</strong>, <strong>analyze</strong>, <strong>train</strong>, and <strong>prove</strong> readiness across HIPAA and CMMC.</p>
-      <div class="cta-row">
-        <!-- Use subdomains so these work immediately -->
-        <a class="btn btn-gradient" href="https://hipaa.xyberiq.io/" aria-label="Go to HIPAA Readiness">HIPAA Readiness</a>
-        <a class="btn btn-ghost" href="https://cmmc.xyberiq.io/" aria-label="Go to CMMC Readiness">CMMC Readiness</a>
+  <section class="hero">
+    <div class="orb"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Launch-ready compliance</div>
+        <h1 class="h1">Simplify security. Prove compliance. <span style="color:#7fd8ff">Move faster.</span></h1>
+        <p class="lead">One flow to assess, generate a branded gap report, and lock in the 30–90 day plan. No vendor sprawl. No mystery PDFs.</p>
+        <div class="cta">
+          <a class="btn-primary" href="/assessment_hipaa/index.html">Start HIPAA Assessment →</a>
+          <a class="btn-ghost" href="/assessment/index.html">Start CMMC Assessment</a>
+        </div>
+        <div class="panel" style="margin-top:16px">
+          <div class="kpis">
+            <div class="kpi"><div class="label">Avg. setup to report</div><div class="value">~4 minutes</div></div>
+            <div class="kpi"><div class="label">Readiness bands</div><div class="value">High Risk → Ready</div></div>
+            <div class="kpi"><div class="label">Export</div><div class="value">Print-to-PDF</div></div>
+          </div>
+        </div>
       </div>
-      <div class="trust" aria-label="Highlights">
-        <span>Client-side assessments</span><span class="dot"></span>
-        <span>Audit-ready reports</span><span class="dot"></span>
-        <span>HubSpot & Make.com integration</span>
+      <div>
+        <div class="panel">
+          <img src="hipaa-og-1200x630.png" alt="XyberIQ preview" style="width:100%;border-radius:12px;border:1px solid #1b2342;display:block">
+          <p style="color:#8ea0c8;font-size:12px;margin:10px 2px 0">Tip: this preview image doubles as your Open Graph card for social shares.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <main id="main">
-    <section aria-labelledby="pain-h2">
-      <div class="container">
-        <h2 id="pain-h2">Security & Compliance Teams Deserve Better Tools</h2>
-        <p class="lead">Teams juggle frameworks, training, and evidence across spreadsheets and silos. The result is effort without clarity and audits without confidence.</p>
-        <div class="grid" role="list">
-          <div class="card" role="listitem"><h3>Disconnected Tools</h3><p class="muted">Policies, training, and audit logs live in separate systems. Nothing lines up when it matters.</p></div>
-          <div class="card" role="listitem"><h3>Manual Evidence</h3><p class="muted">Hours lost collecting screenshots and change logs. Evidence should be a click, not a crusade.</p></div>
-          <div class="card" role="listitem"><h3>Audit Anxiety</h3><p class="muted">“Are we ready?” is guesswork without real-time posture and a prioritized action plan.</p></div>
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="wrap">
+      <div class="cards">
+        <div class="card">
+          <h3>Instant, client-side scoring</h3>
+          <p>No libraries, no backend. Your quiz → score → report runs 100% in the browser for speed. </p>
+        </div>
+        <div class="card">
+          <h3>Branded gap reports</h3>
+          <p>Beautiful HIPAA/CMMC reports with badges, KPIs, and 30–90 day actions. Print to PDF for leadership.</p>
+        </div>
+        <div class="card">
+          <h3>Make.com → HubSpot</h3>
+          <p>Webhook payloads flow into your CRM automatically, tagged by framework and score band.</p>
         </div>
       </div>
-    </section>
-
-    <section aria-labelledby="transform-h2">
-      <div class="container">
-        <h2 id="transform-h2">Your All-in-One Compliance Readiness Suite</h2>
-        <p class="lead">XyberIQ automates the heavy lifting — turning audits into action and checklists into clarity.</p>
-        <div class="pillars" role="list">
-          <div class="pillar" role="listitem"><strong>Assess</strong><span class="muted">Interactive readiness quizzes for HIPAA and CMMC.</span></div>
-          <div class="pillar" role="listitem"><strong>Analyze</strong><span class="muted">Instant gap reports with plain-English scoring and timelines.</span></div>
-          <div class="pillar" role="listitem"><strong>Train</strong><span class="muted">Role-based micro-lessons mapped to your weak spots.</span></div>
-          <div class="pillar" role="listitem"><strong>Prove</strong><span class="muted">Audit-ready evidence and exports in one click.</span></div>
-        </div>
-        <div class="cta-row" style="margin-top:18px">
-          <a class="btn btn-gradient" href="https://hipaa.xyberiq.io/">Explore HIPAA</a>
-          <a class="btn" href="https://cmmc.xyberiq.io/" style="border-color:#e5e7eb;color:var(--ink)">Explore CMMC</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="how" aria-labelledby="how-h2">
-      <div class="container">
-        <h2 id="how-h2">From Risk Discovery to Proof in 4 Steps</h2>
-        <div class="steps" role="list">
-          <div class="step" role="listitem"><div class="n">1 ─ ASSESS</div><div>Answer a focused, framework-smart questionnaire.</div></div>
-          <div class="step" role="listitem"><div class="n">2 ─ ANALYZE</div><div>Get instant scoring, prioritized gaps, and timelines.</div></div>
-          <div class="step" role="listitem"><div class="n">3 ─ ACT</div><div>Launch targeted training and remediation steps.</div></div>
-          <div class="step" role="listitem"><div class="n">4 ─ PROVE</div><div>Export audit-ready reports and evidence in a click.</div></div>
-        </div>
-        <p class="muted" style="margin-top:10px">All rendering is client-side for speed and privacy. Optional automation via Make.com → HubSpot.</p>
-      </div>
-    </section>
-
-    <section id="why" aria-labelledby="roi-h2">
-      <div class="container">
-        <h2 id="roi-h2">Measurable Gains. Immediate Relief.</h2>
-        <div class="kpis">
-          <div class="kpi"><div class="v">75%↓</div><div class="muted">Less time preparing audit evidence</div></div>
-          <div class="kpi"><div class="v">40%↑</div><div class="muted">Faster alignment to HIPAA/CMMC</div></div>
-          <div class="kpi"><div class="v">100%</div><div class="muted">Audit-ready confidence</div></div>
-        </div>
-        <div class="quote">
-          <strong>“Our first calm audit.”</strong>
-          <p class="muted" style="margin:6px 0 0 0">“XyberIQ showed our score, our roadmap, and our next steps — before auditors even asked.”</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="integrations" aria-labelledby="int-h2">
-      <div class="container">
-        <h2 id="int-h2">Works with Your Stack</h2>
-        <p class="lead">XyberIQ plugs into your workflow — not the other way around.</p>
-        <div class="logos" role="list">
-          <div class="logo" role="listitem">HubSpot</div>
-          <div class="logo" role="listitem">Make.com</div>
-          <div class="logo" role="listitem">Google Workspace</div>
-          <div class="logo" role="listitem">AWS</div>
-          <div class="logo" role="listitem">Azure</div>
-          <div class="logo" role="listitem">Slack</div>
-          <div class="logo" role="listitem">ServiceNow (soon)</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="cta" class="closing" aria-labelledby="closing-h2">
-      <div class="container" style="max-width:860px">
-        <h2 id="closing-h2">Compliance Should Feel Like Confidence</h2>
-        <p>Leave the spreadsheets behind. Get a clear, intelligent platform that helps your team measure, train, and prove — continuously.</p>
-        <div class="cta-row" style="justify-content:center">
-          <a class="btn btn-gradient" href="https://hipaa.xyberiq.io/">Try HIPAA Free</a>
-          <a class="btn btn-ghost" href="https://cmmc.xyberiq.io/">Try CMMC Free</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container foot">
-      <div>© <span id="year"></span> XyberIQ • Privacy • Terms</div>
-      <div style="opacity:.7">Built for trust. Designed for simplicity.</div>
     </div>
-  </footer>
+  </section>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="steps">
+        <div class="step"><div class="n">1</div><h3>Assess</h3><p>12 questions, 1–5 Likert scale. Live readiness badge and total score.</p></div>
+        <div class="step"><div class="n">2</div><h3>Report</h3><p>Auto-generated HIPAA/CMMC report with gaps + prioritized actions.</p></div>
+        <div class="step"><div class="n">3</div><h3>Act</h3><p>Roadmap your first 90 days and capture evidence as you go.</p></div>
+      </div>
+      <div class="cta" style="margin-top:18px">
+        <a class="btn-primary" href="/reports_hipaa/hipaa_gap_report_xyberiq.html">Preview HIPAA Report</a>
+        <a class="btn-ghost" href="/reports/cmmc_gap_report_xyberiq.html">Preview CMMC Report</a>
+      </div>
+    </div>
+  </section>
 
-  <!-- Google Analytics 4 (replace with your real ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-692Y0RXXZ7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-692Y0RXXZ7');
-  </script>
+  <footer>© <span id="y"></span> XyberIQ • Readiness Suite</footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
