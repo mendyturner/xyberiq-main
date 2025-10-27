@@ -1,120 +1,96 @@
 <!doctype html>
 <html lang="en">
-  <button onclick="xyberTheme.toggle()" style="all:unset;cursor:pointer;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--chip);color:var(--muted);font-weight:800">
-  Theme
-</button>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>XyberIQ — Compliance training that doesn’t feel like homework</title>
-  <meta name="description" content="XyberIQ turns HIPAA/CMMC readiness into a fast, guided flow—assess, get gaps, fix what matters." />
+  <meta name="description" content="XyberIQ turns HIPAA and CMMC readiness into a fast, guided flow—assess, get gaps, fix what matters." />
   <meta name="color-scheme" content="light">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-692Y0RXXZ7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-692Y0RXXZ7');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      /* Brand tokens reused from your assessment/report packs */
-      --electric:#0072FF; /* electric blue */
-      --aqua:#00E0FF;     /* aqua */
-      --ink:#0B1221;      /* near-black */
-      --muted:#6b7280;    /* slate */
-      --panel:#F6F9FF;
-      --bg:#0A0F1E;       /* dark backdrop for drama */
-      --card:#0F162DCC;   /* glass */
-      --border:#20263D;
-      --white:#fff;
+      --electric:#0072FF; --aqua:#00E0FF; --ink:#0B1221; --muted:#6b7280;
+      --panel:#F6F9FF; --bg:#0A0F1E; --card:#0F162DCC; --border:#20263D; --white:#fff;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;background:radial-gradient(1200px 600px at 10% -10%, #13204a 0%, #090f1f 45%, #070b17 100%), var(--bg);
-      color:#e8eeff;font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      margin:0;
+      background:radial-gradient(1200px 600px at 10% -10%, #13204a 0%, #090f1f 45%, #070b17 100%), var(--bg);
+      color:#e8eeff;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
     }
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1120px;margin:0 auto;padding:24px}
-    /* Nav */
-    .nav{
-      position:sticky;top:0;z-index:20;
-      backdrop-filter: blur(10px);
-      background:linear-gradient(0deg, #0c1225aa, #0c1225aa);
-      border-bottom:1px solid #141a30;
-    }
+    .nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);
+      background:linear-gradient(0deg,#0c1225aa,#0c1225aa);border-bottom:1px solid #141a30;}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px}
     .brand{display:flex;align-items:center;gap:12px}
-    .mark{
-      width:34px;height:34px;border-radius:10px;flex:none;
-      background:conic-gradient(from 180deg at 50% 50%, var(--electric), var(--aqua), var(--electric));
-      box-shadow:0 6px 18px rgba(0,114,255,.35);
-    }
-    .word{font:800 18px/1 Poppins, Inter;color:#dfe6ff;letter-spacing:.2px}
+    .mark{width:34px;height:34px;border-radius:10px;flex:none;
+      background:conic-gradient(from 180deg,var(--electric),var(--aqua),var(--electric));
+      box-shadow:0 6px 18px rgba(0,114,255,.35);}
+    .word{font:800 18px/1 Poppins;color:#dfe6ff;letter-spacing:.2px}
     .nav a.btn{padding:10px 14px;border-radius:12px;font-weight:800;background:linear-gradient(90deg,var(--electric),var(--aqua));color:#fff}
     .nav a.link{color:#a9b2d0;padding:8px 10px;border-radius:10px}
     .nav a.link:hover{background:#121a34}
-
-    /* Hero */
     .hero{position:relative;overflow:hidden;padding:94px 0 40px}
-    .orb{
-      position:absolute;inset:-200px -200px auto auto;width:520px;height:520px;border-radius:999px;filter:blur(60px) saturate(120%);
-      background:
-        radial-gradient(200px 200px at 70% 40%, rgba(0,224,255,.35), transparent 60%),
-        conic-gradient(from 180deg at 50% 50%, rgba(0,114,255,.45), rgba(0,224,255,.4), rgba(0,114,255,.45));
-      animation:float 12s ease-in-out infinite;
-      opacity:.75;pointer-events:none;
-    }
-    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-18px)}100%{transform:translateY(0)}}
-
+    .orb{position:absolute;inset:-200px -200px auto auto;width:520px;height:520px;border-radius:999px;filter:blur(60px) saturate(120%);
+      background:radial-gradient(200px 200px at 70% 40%,rgba(0,224,255,.35),transparent 60%),
+                 conic-gradient(from 180deg at 50% 50%,rgba(0,114,255,.45),rgba(0,224,255,.4),rgba(0,114,255,.45));
+      animation:float 12s ease-in-out infinite;opacity:.75;pointer-events:none;}
+    @keyframes float{50%{transform:translateY(-18px)}}
     .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
     .eyebrow{color:#8fbaff;font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:12px}
-    .h1{font:800 44px/1.05 Poppins, Inter;color:#f6f9ff;margin:10px 0 12px}
+    .h1{font:800 44px/1.05 Poppins;color:#f6f9ff;margin:10px 0 12px}
     .lead{color:#b8c3e3;font-size:18px}
     .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
     .btn-primary{background:linear-gradient(90deg,var(--electric),var(--aqua));color:#fff;padding:14px 18px;border:0;border-radius:14px;font-weight:800;cursor:pointer}
     .btn-ghost{background:#0d142b;border:1px solid #1a2343;color:#dbe5ff;padding:14px 16px;border-radius:14px;font-weight:800}
-    .panel{
-      background:linear-gradient(180deg, #0f162d, #0f162d) padding-box;
-      border:1px solid var(--border);border-radius:16px;padding:16px;
-      box-shadow:0 20px 40px rgba(2,8,28,.35);
-    }
+    .panel{background:linear-gradient(180deg,#0f162d,#0f162d) padding-box;
+      border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:0 20px 40px rgba(2,8,28,.35);}
     .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
     .kpi{background:#0c1225;border:1px solid #19203a;border-radius:12px;padding:12px}
     .kpi .label{font-size:12px;color:#8ea0c8}
     .kpi .value{font-weight:800;font-size:20px}
-
-    /* Features */
     .section{padding:56px 0}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .card{background:linear-gradient(180deg,#101838,#0e152f);border:1px solid #1b2342;border-radius:16px;padding:18px}
-    .card h3{margin:6px 0 6px;font:800 18px/1.2 Inter}
+    .card h3{margin:6px 0;font:800 18px/1.2 Inter}
     .card p{margin:0;color:#b8c3e3;font-size:14px}
-
-    /* How it works */
     .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .step{background:linear-gradient(180deg,#101838,#0e152f);border:1px solid #1b2342;border-radius:16px;padding:18px}
     .step .n{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:9px;
       background:linear-gradient(90deg,var(--electric),var(--aqua));color:#001534;font-weight:900;margin-bottom:8px}
-
-    /* Footer */
     footer{color:#8da0c8;border-top:1px solid #141a30;padding:22px 0;margin-top:40px;font-size:12px;text-align:center}
-
-    @media (max-width:920px){
-      .hero-grid{grid-template-columns:1fr}
-      .cards,.steps,.kpis{grid-template-columns:1fr}
-    }
+    @media (max-width:920px){.hero-grid{grid-template-columns:1fr}.cards,.steps,.kpis{grid-template-columns:1fr}}
   </style>
 </head>
+
 <body>
   <!-- NAV -->
   <div class="nav">
     <div class="nav-inner wrap">
       <div class="brand">
-        <div class="mark" aria-hidden="true"></div>
+        <div class="mark"></div>
         <div class="word">XyberIQ</div>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
         <a class="link" href="#features">Features</a>
         <a class="link" href="#how">How it works</a>
-        <a class='btn' href="/assessment_hipaa/index.html">Get Started</a>
-       
+        <a class="btn" href="https://hipaa.xyberiq.io/assessment_hipaa/">HIPAA</a>
+        <a class="btn" href="https://cmmc.xyberiq.io/assessment/">CMMC</a>
       </div>
     </div>
   </div>
@@ -126,14 +102,16 @@
       <div>
         <div class="eyebrow">Launch-ready compliance</div>
         <h1 class="h1">Simplify security. Prove compliance. <span style="color:#7fd8ff">Move faster.</span></h1>
-        <p class="lead">One flow to assess, generate a branded gap report, and lock in the 30–90 day plan. No vendor sprawl. No mystery PDFs.</p>
+        <p class="lead">Assess, generate a branded gap report, and lock in your 30–90 day action plan. No vendor sprawl. No mystery PDFs.</p>
         <div class="cta">
           <a class="btn-primary" href="https://hipaa.xyberiq.io/assessment_hipaa/">Start HIPAA Assessment →</a>
-            <a class="btn-ghost"   href="https://hipaa.xyberiq.io/reports_hipaa/hipaa_gap_report_xyberiq.html">Preview HIPAA Report</a>lass="btn" href="
+          <a class="btn-ghost"   href="https://hipaa.xyberiq.io/reports_hipaa/hipaa_gap_report_xyberiq.html">Preview HIPAA Report</a>
+          <a class="btn-primary" href="https://cmmc.xyberiq.io/assessment/">Start CMMC Assessment →</a>
+          <a class="btn-ghost"   href="https://cmmc.xyberiq.io/reports/cmmc_gap_report_xyberiq.html">Preview CMMC Report</a>
         </div>
         <div class="panel" style="margin-top:16px">
           <div class="kpis">
-            <div class="kpi"><div class="label">Avg. setup to report</div><div class="value">~4 minutes</div></div>
+            <div class="kpi"><div class="label">Avg. setup → report</div><div class="value">≈ 4 min</div></div>
             <div class="kpi"><div class="label">Readiness bands</div><div class="value">High Risk → Ready</div></div>
             <div class="kpi"><div class="label">Export</div><div class="value">Print-to-PDF</div></div>
           </div>
@@ -142,7 +120,7 @@
       <div>
         <div class="panel">
           <img src="hipaa-og-1200x630.png" alt="XyberIQ preview" style="width:100%;border-radius:12px;border:1px solid #1b2342;display:block">
-          <p style="color:#8ea0c8;font-size:12px;margin:10px 2px 0">Tip: this preview image doubles as your Open Graph card for social shares.</p>
+          <p style="color:#8ea0c8;font-size:12px;margin:10px 2px 0">This image doubles as your Open Graph preview for social shares.</p>
         </div>
       </div>
     </div>
@@ -152,18 +130,9 @@
   <section class="section" id="features">
     <div class="wrap">
       <div class="cards">
-        <div class="card">
-          <h3>Instant, client-side scoring</h3>
-          <p>No libraries, no backend. Your quiz → score → report runs 100% in the browser for speed. </p>
-        </div>
-        <div class="card">
-          <h3>Branded gap reports</h3>
-          <p>Beautiful HIPAA/CMMC reports with badges, KPIs, and 30–90 day actions. Print to PDF for leadership.</p>
-        </div>
-        <div class="card">
-          <h3>Make.com → HubSpot</h3>
-          <p>Webhook payloads flow into your CRM automatically, tagged by framework and score band.</p>
-        </div>
+        <div class="card"><h3>Instant, client-side scoring</h3><p>Everything runs locally for speed — no backend latency.</p></div>
+        <div class="card"><h3>Branded, executive-ready reports</h3><p>HIPAA + CMMC reports with KPIs and 30–90 day actions.</p></div>
+        <div class="card"><h3>Automation hooks</h3><p>Make.com → HubSpot for automatic lead capture by framework.</p></div>
       </div>
     </div>
   </section>
@@ -172,13 +141,9 @@
   <section class="section" id="how">
     <div class="wrap">
       <div class="steps">
-        <div class="step"><div class="n">1</div><h3>Assess</h3><p>12 questions, 1–5 Likert scale. Live readiness badge and total score.</p></div>
-        <div class="step"><div class="n">2</div><h3>Report</h3><p>Auto-generated HIPAA/CMMC report with gaps + prioritized actions.</p></div>
-        <div class="step"><div class="n">3</div><h3>Act</h3><p>Roadmap your first 90 days and capture evidence as you go.</p></div>
-      </div>
-      <div class="cta" style="margin-top:18px">
-        <a class="btn-primary" href="/reports_hipaa/hipaa_gap_report_xyberiq.html">Preview HIPAA Report</a>
-        <a class="btn-ghost" href="/reports/cmmc_gap_report_xyberiq.html">Preview CMMC Report</a>
+        <div class="step"><div class="n">1</div><h3>Assess</h3><p>12 questions · instant readiness band · live score.</p></div>
+        <div class="step"><div class="n">2</div><h3>Report</h3><p>Auto-generated HIPAA / CMMC gap report + priority actions.</p></div>
+        <div class="step"><div class="n">3</div><h3>Act</h3><p>Follow the 30–90 day roadmap and gather evidence as you go.</p></div>
       </div>
     </div>
   </section>
