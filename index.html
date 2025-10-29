@@ -3,187 +3,113 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>XyberIQ — Compliance training that doesn’t feel like homework</title>
-  <meta name="description" content="XyberIQ turns HIPAA and CMMC readiness into a fast, guided flow—assess, get gaps, fix what matters." />
-  <meta name="color-scheme" content="light">
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-692Y0RXXZ7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-692Y0RXXZ7');
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <title>XyberIQ — Clarity. Compliance. Confidence.</title>
+  <meta name="description" content="XyberIQ delivers frictionless cybersecurity compliance training. CMMC, HIPAA, PCI-DSS, ISO/IEC 27001, SOC 2 modules with instant gap reports and readiness tools." />
+  <link rel="canonical" href="https://xyberiq.io/" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 
   <style>
     :root{
-      --electric:#0072FF; --aqua:#00E0FF; --ink:#0B1221; --muted:#6b7280;
-      --panel:#F6F9FF; --bg:#0A0F1E; --card:#0F162DCC; --border:#20263D; --white:#fff;
+      --primary-blue:#0072FF;
+      --accent-aqua:#00E0FF;
+      --neutral-white:#FFFFFF;
+      --support-gray:#2B2B2B;
+      --background-black:#000000;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background:radial-gradient(1200px 600px at 10% -10%, #13204a 0%, #090f1f 45%, #070b17 100%), var(--bg);
-      color:#e8eeff;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;background-color:var(--background-black);color:var(--neutral-white);line-height:1.6;overflow-x:hidden;}
+
+    header{position:fixed;top:0;left:0;width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);z-index:1000;border-bottom:1px solid rgba(255,255,255,0.08)}
+
+    .logo img{height:60px;width:auto;display:block;}
+
+    nav ul{list-style:none;display:flex;gap:32px;}
+    nav a{text-decoration:none;color:var(--neutral-white);font-family:'Poppins',sans-serif;font-weight:600;transition:color 0.2s ease-in-out;}
+    nav a:hover{color:var(--accent-aqua);}
+
+    .cta{display:flex;gap:14px;}
+    .btn{font-family:'Poppins',sans-serif;font-weight:700;padding:10px 20px;border-radius:10px;border:1px solid var(--primary-blue);color:var(--neutral-white);background:transparent;cursor:pointer;transition:background .3s ease;}
+    .btn:hover{background:var(--primary-blue);}
+    .btn-primary{background:linear-gradient(90deg,var(--primary-blue),var(--accent-aqua));border:none;color:var(--background-black);}
+
+    .hero{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;height:90vh;padding:0 60px;margin-top:100px;background:radial-gradient(circle at top right,rgba(0,114,255,0.2),transparent 50%),radial-gradient(circle at bottom left,rgba(0,224,255,0.15),transparent 50%);}
+
+    .hero h1{font-family:'Poppins',sans-serif;font-size:64px;font-weight:800;line-height:1.1;background:linear-gradient(90deg,var(--primary-blue),var(--accent-aqua));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px;}
+
+    .hero p{max-width:700px;font-size:20px;color:#C9C9C9;margin-bottom:40px;}
+
+    section{padding:80px 60px;max-width:1200px;margin:auto;}
+    h2{font-family:'Poppins',sans-serif;font-size:36px;font-weight:700;margin-bottom:20px;background:linear-gradient(90deg,var(--primary-blue),var(--accent-aqua));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+
+    footer{background-color:#0A0A0A;padding:60px;color:#B7B7B7;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;border-top:1px solid rgba(255,255,255,0.1)}
+    footer a{color:#B7B7B7;text-decoration:none;}
+    footer a:hover{color:var(--accent-aqua);}
+    footer h4{color:var(--neutral-white);margin-bottom:10px;font-family:'Poppins',sans-serif;font-weight:700;}
+
+    @media(max-width:900px){
+      header{flex-direction:column;align-items:flex-start;padding:20px 30px;}
+      nav ul{flex-wrap:wrap;gap:16px;margin-top:10px;}
+      .hero h1{font-size:48px;}
+      section{padding:60px 30px;}
+      footer{grid-template-columns:1fr 1fr;gap:20px;}
     }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1120px;margin:0 auto;padding:24px}
-    .nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);
-      background:linear-gradient(0deg,#0c1225aa,#0c1225aa);border-bottom:1px solid #141a30;}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px}
-    .brand{display:flex;align-items:center;gap:12px}
-    /* mark — container for the logo; visually bold */
-    .mark{
-      width:48px;height:48px;flex:none;border-radius:10px;
-      display:inline-flex;align-items:center;justify-content:center;
-      background:linear-gradient(90deg,var(--electric),var(--aqua));
-      box-shadow:0 8px 26px rgba(0,114,255,.35), inset 0 -6px 18px rgba(255,255,255,0.03);
-      border-radius:10px;overflow:hidden;
-      transform:translateZ(0);
-      padding:6px;
-    }
-    /* SVG or PNG inside the picture/IMG — fixed layout size for consistent spacing */
-    .mark img,
-    .mark svg { width:34px; height:34px; display:block; object-fit:contain; background:transparent; }
-    .mark img { filter: drop-shadow(0 6px 14px rgba(0,0,0,0.45)); }
-    /* Brand word — stronger, larger, and gradient-filled text for boldness */
-    .word{
-      font:800 20px/1 Poppins;
-      background:linear-gradient(90deg,var(--electric),var(--aqua));
-      -webkit-background-clip:text; background-clip:text;
-      -webkit-text-fill-color:transparent;
-      color:transparent;
-      letter-spacing:.2px;
-    }
-    .nav a.btn{padding:10px 14px;border-radius:12px;font-weight:800;background:linear-gradient(90deg,var(--electric),var(--aqua));color:#fff}
-    .nav a.link{color:#a9b2d0;padding:8px 10px;border-radius:10px}
-    .nav a.link:hover{background:#121a34}
-    .hero{position:relative;overflow:hidden;padding:94px 0 40px}
-    .orb{position:absolute;inset:-200px -200px auto auto;width:520px;height:520px;border-radius:999px;filter:blur(60px) saturate(120%);
-      background:radial-gradient(200px 200px at 70% 40%,rgba(0,224,255,.35),transparent 60%),
-                 conic-gradient(from 180deg at 50% 50%,rgba(0,114,255,.45),rgba(0,224,255,.4),rgba(0,114,255,.45));
-      animation:float 12s ease-in-out infinite;opacity:.75;pointer-events:none;}
-    @keyframes float{50%{transform:translateY(-18px)}}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
-    .eyebrow{color:#8fbaff;font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:12px}
-    .h1{font:800 44px/1.05 Poppins;color:#f6f9ff;margin:10px 0 12px}
-    .lead{color:#b8c3e3;font-size:18px}
-    .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-    .btn-primary{background:linear-gradient(90deg,var(--electric),var(--aqua));color:#fff;padding:14px 18px;border:0;border-radius:14px;font-weight:800;cursor:pointer}
-    .btn-ghost{background:#0d142b;border:1px solid #1a2343;color:#dbe5ff;padding:14px 16px;border-radius:14px;font-weight:800}
-    .panel{background:linear-gradient(180deg,#0f162d,#0f162d) padding-box;
-      border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:0 20px 40px rgba(2,8,28,.35);}
-    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .kpi{background:#0c1225;border:1px solid #19203a;border-radius:12px;padding:12px}
-    .kpi .label{font-size:12px;color:#8ea0c8}
-    .kpi .value{font-weight:800;font-size:20px}
-    .section{padding:56px 0}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{background:linear-gradient(180deg,#101838,#0e152f);border:1px solid #1b2342;border-radius:16px;padding:18px}
-    .card h3{margin:6px 0;font:800 18px/1.2 Inter}
-    .card p{margin:0;color:#b8c3e3;font-size:14px}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .step{background:linear-gradient(180deg,#101838,#0e152f);border:1px solid #1b2342;border-radius:16px;padding:18px}
-    .step .n{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:9px;
-      background:linear-gradient(90deg,var(--electric),var(--aqua));color:#001534;font-weight:900;margin-bottom:8px}
-    footer{color:#8da0c8;border-top:1px solid #141a30;padding:22px 0;margin-top:40px;font-size:12px;text-align:center}
-    @media (max-width:920px){.hero-grid{grid-template-columns:1fr}.cards,.steps,.kpis{grid-template-columns:1fr}}
   </style>
 </head>
 
 <body>
-  <!-- NAV -->
-  <div class="nav">
-    <div class="nav-inner wrap">
-      <div class="brand">
-        <!-- Retina-aware logo: use SVG when supported, but provide PNG fallbacks (1x/2x) via picture/srcset.
-             Vector SVG is already resolution-independent, but having PNG fallbacks (assets/logo.png and assets/logo@2x.png)
-             ensures crisp raster rendering in contexts where SVG support or rendering may vary (email previews, some older clients). -->
-        <a class="mark" href="/" aria-label="XyberIQ home">
-          <picture>
-            <!-- Primary: vector SVG (crisp at any DPI) -->
-            <source type="image/svg+xml" srcset="assets/logo.svg">
-            <!-- Fallback raster images with srcset for retina: include 1x and 2x PNGs -->
-            <img src="assets/logo.png" srcset="assets/logo@2x.png 2x" width="34" height="34" alt="XyberIQ logo">
-          </picture>
-        </a>
-
-        <div class="word">XyberIQ</div>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <a class="link" href="#features">Features</a>
-        <a class="link" href="#how">How it works</a>
-        <a class="btn" href="https://hipaa.xyberiq.io/assessment_hipaa/">HIPAA</a>
-        <a class="btn" href="https://cmmc.xyberiq.io/assessment/">CMMC</a>
-      </div>
+  <header>
+    <div class="logo">
+      <img src="/assets/XyberIQ-Logo.png" alt="XyberIQ Logo" />
     </div>
-  </div>
+    <nav>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#industry">Industry</a></li>
+        <li><a href="#resources">Resources</a></li>
+      </ul>
+    </nav>
+    <div class="cta">
+      <a href="/assets/compliance-by-industry.pdf" class="btn">Download Asset</a>
+      <a href="https://calendly.com/xyberiq/intro" target="_blank" class="btn btn-primary">Schedule a Call</a>
+    </div>
+  </header>
 
-  <!-- HERO -->
   <section class="hero">
-    <div class="orb"></div>
-    <div class="wrap hero-grid">
-      <div>
-        <div class="eyebrow">Launch-ready compliance</div>
-        <h1 class="h1">Simplify security. Prove compliance. <span style="color:#7fd8ff">Move faster.</span></h1>
-        <p class="lead">Assess, generate a branded gap report, and lock in your 30–90 day action plan. No vendor sprawl. No mystery PDFs.</p>
-        <div class="cta">
-          <a class="btn-primary" href="https://hipaa.xyberiq.io/assessment_hipaa/">Start HIPAA Assessment →</a>
-          <a class="btn-ghost"   href="https://hipaa.xyberiq.io/reports_hipaa/hipaa_gap_report_xyberiq.html">Preview HIPAA Report</a>
-          <a class="btn-primary" href="https://cmmc.xyberiq.io/assessment/">Start CMMC Assessment →</a>
-          <a class="btn-ghost"   href="https://cmmc.xyberiq.io/reports/cmmc_gap_report_xyberiq.html">Preview CMMC Report</a>
-        </div>
-        <div class="panel" style="margin-top:16px">
-          <div class="kpis">
-            <div class="kpi"><div class="label">Avg. setup → report</div><div class="value">≈ 4 min</div></div>
-            <div class="kpi"><div class="label">Readiness bands</div><div class="value">High Risk → Ready</div></div>
-            <div class="kpi"><div class="label">Export</div><div class="value">Print-to-PDF</div></div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="panel">
-          <img src="hipaa-og-1200x630.png" alt="XyberIQ preview" style="width:100%;border-radius:12px;border:1px solid #1b2342;display:block">
-          <p style="color:#8ea0c8;font-size:12px;margin:10px 2px 0">This image doubles as your Open Graph preview for social shares.</p>
-        </div>
-      </div>
+    <h1>Clarity. Compliance. Confidence.</h1>
+    <p>XyberIQ empowers teams to achieve cybersecurity compliance with speed and integrity — transforming complex frameworks like CMMC, HIPAA, PCI‑DSS, ISO/IEC 27001, and SOC 2 into simple, measurable actions.</p>
+    <div class="cta">
+      <a href="#resources" class="btn-primary btn">Get Started</a>
+      <a href="https://beta.xyberiq.io" class="btn" target="_blank">View Beta</a>
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section class="section" id="features">
-    <div class="wrap">
-      <div class="cards">
-        <div class="card"><h3>Instant, client-side scoring</h3><p>Everything runs locally for speed — no backend latency.</p></div>
-        <div class="card"><h3>Branded, executive-ready reports</h3><p>HIPAA + CMMC reports with KPIs and 30–90 day actions.</p></div>
-        <div class="card"><h3>Automation hooks</h3><p>Make.com → HubSpot for automatic lead capture by framework.</p></div>
-      </div>
-    </div>
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Our mission is to empower every organization to achieve and sustain cybersecurity compliance with clarity, speed, and integrity — turning regulations into repeatable habits that protect people and propel business growth.</p>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="section" id="how">
-    <div class="wrap">
-      <div class="steps">
-        <div class="step"><div class="n">1</div><h3>Assess</h3><p>12 questions · instant readiness band · live score.</p></div>
-        <div class="step"><div class="n">2</div><h3>Report</h3><p>Auto-generated HIPAA / CMMC gap report + priority actions.</p></div>
-        <div class="step"><div class="n">3</div><h3>Act</h3><p>Follow the 30–90 day roadmap and gather evidence as you go.</p></div>
-      </div>
+  <footer>
+    <div>
+      <img src="/assets/XyberIQ-Logo.png" alt="XyberIQ Logo" style="height:40px;margin-bottom:10px;" />
+      <p>© <span id="year"></span> XyberIQ. All rights reserved.</p>
     </div>
-  </section>
-  <footer style="text-align:center; padding:20px; background-color:#0a0a0a; color:#ccc; font-size:14px;">
-  <p>
-    © 2025 XyberIQ. All rights reserved. |  Readiness Suite
-    <a href="privacy-policy.html" style="color:#00ffff; text-decoration:none;">Privacy Policy</a> |
-    <a href="terms-and-conditions.html" style="color:#00ffff; text-decoration:none;">Terms & Conditions</a>
-  </p>
-</footer>
+    <div>
+      <h4>Company</h4>
+      <a href="#about">About Us</a><br><a href="#services">Services</a>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <a href="#resources">Whitepaper</a><br><a href="https://hipaa.xyberiq.io/assessment_hipaa/index.html">HIPAA Readiness</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="/privacy.html">Privacy Policy</a><br><a href="/terms.html">Terms & Conditions</a>
+    </div>
+  </footer>
 
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
