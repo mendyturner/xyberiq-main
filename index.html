@@ -38,10 +38,29 @@
       background:linear-gradient(0deg,#0c1225aa,#0c1225aa);border-bottom:1px solid #141a30;}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px}
     .brand{display:flex;align-items:center;gap:12px}
-    .mark{width:34px;height:34px;border-radius:10px;flex:none;
-      background:conic-gradient(from 180deg,var(--electric),var(--aqua),var(--electric));
-      box-shadow:0 6px 18px rgba(0,114,255,.35);}
-    .word{font:800 18px/1 Poppins;color:#dfe6ff;letter-spacing:.2px}
+    /* mark — container for the logo; visually bold */
+    .mark{
+      width:48px;height:48px;flex:none;border-radius:10px;
+      display:inline-flex;align-items:center;justify-content:center;
+      background:linear-gradient(90deg,var(--electric),var(--aqua));
+      box-shadow:0 8px 26px rgba(0,114,255,.35), inset 0 -6px 18px rgba(255,255,255,0.03);
+      border-radius:10px;overflow:hidden;
+      transform:translateZ(0);
+      padding:6px;
+    }
+    /* SVG or PNG inside the picture/IMG — fixed layout size for consistent spacing */
+    .mark img,
+    .mark svg { width:34px; height:34px; display:block; object-fit:contain; background:transparent; }
+    .mark img { filter: drop-shadow(0 6px 14px rgba(0,0,0,0.45)); }
+    /* Brand word — stronger, larger, and gradient-filled text for boldness */
+    .word{
+      font:800 20px/1 Poppins;
+      background:linear-gradient(90deg,var(--electric),var(--aqua));
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent;
+      color:transparent;
+      letter-spacing:.2px;
+    }
     .nav a.btn{padding:10px 14px;border-radius:12px;font-weight:800;background:linear-gradient(90deg,var(--electric),var(--aqua));color:#fff}
     .nav a.link{color:#a9b2d0;padding:8px 10px;border-radius:10px}
     .nav a.link:hover{background:#121a34}
@@ -83,7 +102,18 @@
   <div class="nav">
     <div class="nav-inner wrap">
       <div class="brand">
-        <div class="mark"></div>
+        <!-- Retina-aware logo: use SVG when supported, but provide PNG fallbacks (1x/2x) via picture/srcset.
+             Vector SVG is already resolution-independent, but having PNG fallbacks (assets/logo.png and assets/logo@2x.png)
+             ensures crisp raster rendering in contexts where SVG support or rendering may vary (email previews, some older clients). -->
+        <a class="mark" href="/" aria-label="XyberIQ home">
+          <picture>
+            <!-- Primary: vector SVG (crisp at any DPI) -->
+            <source type="image/svg+xml" srcset="assets/logo.svg">
+            <!-- Fallback raster images with srcset for retina: include 1x and 2x PNGs -->
+            <img src="assets/logo.png" srcset="assets/logo@2x.png 2x" width="34" height="34" alt="XyberIQ logo">
+          </picture>
+        </a>
+
         <div class="word">XyberIQ</div>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
