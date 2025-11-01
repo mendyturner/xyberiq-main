@@ -1,0 +1,40 @@
+:root{
+  --primary:#0072FF;
+  --aqua:#00E0FF;
+  --white:#FFFFFF;
+  --black:#000000;   /* matches your site background */
+}
+
+/* Compact header */
+.site-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:4px 20px;           /* thinner top/bottom padding */
+  background-color:var(--ink); /* same as site background */
+  color:var(--white);
+  border-bottom:1px solid rgba(255,255,255,.08); /* subtle divider line */
+}
+
+/* Keep brand area tight */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-shrink:0;
+}
+
+/* Logo sized by height for consistent navbar height */
+.logo{
+  height:42px;      /* try 38–46 for your taste */
+  width:auto;
+  max-height:none;
+  display:block;
+}
+
+/* Optional: hide tagline on small screens */
+@media (max-width:768px){
+  .site-header{flex-wrap:wrap;gap:8px}
+  .logo{height:36px;}
+  .site-title{display:none;}
+}
