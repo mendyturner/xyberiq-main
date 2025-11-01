@@ -8,108 +8,215 @@
   <link rel="canonical" href="https://xyberiq.io/" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-
   <style>
     :root{
-      --primary-blue:#0072FF;
-      --accent-aqua:#00E0FF;
-      --neutral-white:#FFFFFF;
-      --support-gray:#2B2B2B;
-      --background-black:#000000;
+      --primary-blue:#0072FF;--accent-aqua:#00E0FF;--white:#FFFFFF;--gray:#2B2B2B;--black:#000;--ink:#0B0E14;
+      --wrap:clamp(16px, 3vw, 48px);
+      --radius:14px;--radius-lg:18px;--line:rgba(255,255,255,.08)
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;color:var(--white);background:var(--black);line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit;text-decoration:none}
+
+    /* Layout */
+    .container{max-width:1200px;margin:0 auto;padding:0 var(--wrap)}
+
+    /* Header / Nav */
+    header{position:sticky;top:0;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:44px;width:auto}
+
+    /* Accessible hamburger */
+    .menu-toggle{display:none;align-items:center;justify-content:center;gap:10px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#0a0a0a;color:#e7e7e7}
+    .menu-toggle svg{width:22px;height:22px}
+
+    nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+    nav a{font-family:Poppins,Inter,sans-serif;font-weight:700;letter-spacing:.2px}
+
+    .cta{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{font-family:Poppins,Inter,sans-serif;font-weight:700;padding:12px 16px;border-radius:12px;border:1px solid var(--primary-blue);background:transparent;color:var(--white)}
+    .btn:focus-visible{outline:2px solid var(--accent-aqua);outline-offset:2px}
+    .btn-primary{background:linear-gradient(90deg,var(--primary-blue),var(--accent-aqua));border:0;color:#061019}
+
+    /* Mobile nav behavior */
+    @media (max-width: 920px){
+      .menu-toggle{display:inline-flex}
+      nav{position:fixed;inset:64px 0 auto 0; /* below header */ max-height:0;overflow:hidden;transition:max-height .3s ease; background:#05070c;border-bottom:1px solid var(--line)}
+      nav.open{max-height:60vh}
+      nav ul{flex-direction:column;padding:14px var(--wrap)}
+      .cta{display:none}
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Inter',sans-serif;background-color:var(--background-black);color:var(--neutral-white);line-height:1.6;overflow-x:hidden;}
+    /* Hero */
+    .hero{position:relative;padding:clamp(48px,10vw,96px) 0;background:
+      radial-gradient(80vw 60vw at 110% -10%, rgba(0,224,255,.16), transparent 60%),
+      radial-gradient(60vw 50vw at -10% 120%, rgba(0,114,255,.18), transparent 60%)}
+    .hero h1{font-family:Poppins,Inter,sans-serif;font-weight:800;line-height:1.1;margin:0 0 12px;font-size:clamp(28px,7vw,56px);background:linear-gradient(90deg,var(--primary-blue),var(--accent-aqua));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero p{max-width:72ch;color:#cbd3e4;font-size:clamp(16px,2.6vw,20px);margin:0 0 20px}
+    .hero .cta{margin-top:8px}
 
-    header{position:fixed;top:0;left:0;width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);z-index:1000;border-bottom:1px solid rgba(255,255,255,0.08)}
+    /* Sections */
+    section{padding:56px 0;border-top:1px solid var(--line)}
+    h2{font-family:Poppins,Inter,sans-serif;font-size:clamp(22px,4.8vw,32px);font-weight:800;margin:0 0 12px;background:linear-gradient(90deg,var(--primary-blue),var(--accent-aqua));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-    .logo img{height:60px;width:auto;display:block;}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{background:linear-gradient(180deg,#0b1221,#090f1a);border:1px solid var(--line);border-radius:16px;padding:16px}
+    .card h3{margin:0 0 8px;font-family:Poppins,Inter,sans-serif}
+    .mini{font-size:15px;color:#aeb8cc}
 
-    nav ul{list-style:none;display:flex;gap:32px;}
-    nav a{text-decoration:none;color:var(--neutral-white);font-family:'Poppins',sans-serif;font-weight:600;transition:color 0.2s ease-in-out;}
-    nav a:hover{color:var(--accent-aqua);}
+    @media (max-width: 1024px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width: 640px){.grid{grid-template-columns:1fr}.hero .cta .btn{width:100%;text-align:center}}
 
-    .cta{display:flex;gap:14px;}
-    .btn{font-family:'Poppins',sans-serif;font-weight:700;padding:10px 20px;border-radius:10px;border:1px solid var(--primary-blue);color:var(--neutral-white);background:transparent;cursor:pointer;transition:background .3s ease;}
-    .btn:hover{background:var(--primary-blue);}
-    .btn-primary{background:linear-gradient(90deg,var(--primary-blue),var(--accent-aqua));border:none;color:var(--background-black);}
-
-    .hero{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;height:90vh;padding:0 60px;margin-top:100px;background:radial-gradient(circle at top right,rgba(0,114,255,0.2),transparent 50%),radial-gradient(circle at bottom left,rgba(0,224,255,0.15),transparent 50%);}
-
-    .hero h1{font-family:'Poppins',sans-serif;font-size:64px;font-weight:800;line-height:1.1;background:linear-gradient(90deg,var(--primary-blue),var(--accent-aqua));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px;}
-
-    .hero p{max-width:700px;font-size:20px;color:#C9C9C9;margin-bottom:40px;}
-
-    section{padding:80px 60px;max-width:1200px;margin:auto;}
-    h2{font-family:'Poppins',sans-serif;font-size:36px;font-weight:700;margin-bottom:20px;background:linear-gradient(90deg,var(--primary-blue),var(--accent-aqua));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-
-    footer{background-color:#0A0A0A;padding:60px;color:#B7B7B7;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;border-top:1px solid rgba(255,255,255,0.1)}
-    footer a{color:#B7B7B7;text-decoration:none;}
-    footer a:hover{color:var(--accent-aqua);}
-    footer h4{color:var(--neutral-white);margin-bottom:10px;font-family:'Poppins',sans-serif;font-weight:700;}
-
-    @media(max-width:900px){
-      header{flex-direction:column;align-items:flex-start;padding:20px 30px;}
-      nav ul{flex-wrap:wrap;gap:16px;margin-top:10px;}
-      .hero h1{font-size:48px;}
-      section{padding:60px 30px;}
-      footer{grid-template-columns:1fr 1fr;gap:20px;}
-    }
+    /* Footer */
+    footer{background:#090f1a;border-top:1px solid var(--line)}
+    .foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:18px;padding:28px 0;color:#a9b6ce}
+    footer h4{font-family:Poppins;font-weight:700;color:#e6eaf3;margin:0 0 8px}
+    @media (max-width: 900px){.foot{grid-template-columns:1fr 1fr}.footer-cta{margin-top:12px}}
   </style>
 </head>
-
 <body>
   <header>
-    <div class="logo">
-      <img src="/assets/Logo.svg" alt="XyberIQ Logo" />
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#industry">Industry</a></li>
-        <li><a href="#resources">Resources</a></li>
-      </ul>
-    </nav>
-    <div class="cta">
-      <a href="/assets/compliance-by-industry.pdf" class="btn">Download Asset</a>
-      <a href="https://calendly.com/xyberiq/intro" target="_blank" class="btn btn-primary">Schedule a Call</a>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <div class="brand">
+        <a href="#top" aria-label="XyberIQ Home">
+          <img src="/assets/XyberIQ-Logo.png" alt="XyberIQ Logo" />
+        </a>
+      </div>
+      <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        Menu
+      </button>
+      <nav id="site-nav">
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#industry">Industry</a></li>
+          <li><a href="#resources">Resources</a></li>
+        </ul>
+      </nav>
+      <div class="cta">
+        <a href="/assets/compliance-by-industry.pdf" class="btn">Download Asset</a>
+        <a href="https://calendly.com/xyberiq/intro" target="_blank" rel="noopener" class="btn btn-primary">Schedule a Call</a>
+      </div>
     </div>
   </header>
 
-  <section class="hero">
-    <h1>Clarity. Compliance. Confidence.</h1>
-    <p>XyberIQ empowers teams to achieve cybersecurity compliance with speed and integrity — transforming complex frameworks like CMMC, HIPAA, PCI‑DSS, ISO/IEC 27001, and SOC 2 into simple, measurable actions.</p>
-    <div class="cta">
-      <a href="#resources" class="btn-primary btn">Get Started</a>
-      <a href="https://beta.xyberiq.io" class="btn" target="_blank">View Beta</a>
-    </div>
-  </section>
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <h1>Clarity. Compliance. Confidence.</h1>
+        <p>XyberIQ empowers teams to achieve cybersecurity compliance with speed and integrity — transforming complex frameworks like CMMC, HIPAA, PCI‑DSS, ISO/IEC 27001, and SOC 2 into simple, measurable actions.</p>
+        <div class="cta">
+          <a href="#resources" class="btn btn-primary">Get Started</a>
+          <a href="https://beta.xyberiq.io" class="btn" target="_blank" rel="noopener">View Beta</a>
+        </div>
+      </div>
+    </section>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>Our mission is to empower every organization to achieve and sustain cybersecurity compliance with clarity, speed, and integrity — turning regulations into repeatable habits that protect people and propel business growth.</p>
-  </section>
+    <section id="services">
+      <div class="container">
+        <h2>Services</h2>
+        <div class="grid">
+          <article class="card"><h3>CMMC Training & Readiness</h3><p class="mini">Map practices to NIST 800‑171, collect evidence, and prep for L2 certification with living SSP/POA&amp;M.</p></article>
+          <article class="card"><h3>HIPAA Workforce & Gap Closure</h3><p class="mini">Privacy/Security rule coverage with role‑based modules, risk analysis support, and vendor assurance.</p></article>
+          <article class="card"><h3>PCI‑DSS Awareness & Policy Pack</h3><p class="mini">Cardholder data flows, secure handling, and templates aligned to the latest standard.</p></article>
+          <article class="card"><h3>ISO/IEC 27001 Training</h3><p class="mini">ISMS fundamentals, Annex A controls literacy, and culture building for audits.</p></article>
+          <article class="card"><h3>SOC 2 Security Awareness</h3><p class="mini">Trust Services Criteria explained in human language, with attestations and tracking.</p></article>
+          <article class="card"><h3>Readiness Reports & Roadmaps</h3><p class="mini">Click‑to‑PDF reports with KPIs, a starter risk register, and priority actions.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="industry">
+      <div class="container">
+        <h2>Industry Focus</h2>
+        <div class="grid">
+          <article class="card"><h3>Healthcare</h3><p class="mini">Clinics, MSOs, telehealth, biotech.</p></article>
+          <article class="card"><h3>Defense & Manufacturing</h3><p class="mini">DoD subcontractors, primes, aerospace.</p></article>
+          <article class="card"><h3>Financial & Fintech</h3><p class="mini">Lending, payments, FinServ.</p></article>
+          <article class="card"><h3>Retail & eCommerce</h3><p class="mini">Omnichannel ops and PCI.</p></article>
+          <article class="card"><h3>Energy & Oil/Gas</h3><p class="mini">OT/IT blend, supplier assurance.</p></article>
+          <article class="card"><h3>Startups</h3><p class="mini">Credible security posture for sales and funding.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <div class="container">
+        <h2>Resources</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Compliance‑by‑Industry Whitepaper</h3>
+            <p class="mini">A practical overview of how frameworks map to real‑world teams and systems. Includes a one‑page checklist for each industry.</p>
+            <div class="cta"><a class="btn btn-primary" href="/assets/compliance-by-industry.pdf">Download PDF</a> <a class="btn" href="https://calendly.com/xyberiq/intro" target="_blank" rel="noopener">Discuss Your Program</a></div>
+          </article>
+          <article class="card">
+            <h3>HIPAA Readiness Quiz → Report</h3>
+            <p class="mini">12 questions → instant score, roadmap, and printable gap report.</p>
+            <div class="cta"><a class="btn" href="https://hipaa.xyberiq.io/assessment_hipaa/index.html">Launch HIPAA Assessment</a> <a class="btn" href="https://hipaa.xyberiq.io/reports_hipaa/hipaa_gap_report_xyberiq.html">View Report Template</a></div>
+          </article>
+          <article class="card">
+            <h3>CMMC Readiness Quiz → Report</h3>
+            <p class="mini">12 domains aligned to NIST 800‑171 with a clean gap report you can share.</p>
+            <div class="cta"><a class="btn" href="https://cmmc.xyberiq.io/assessment/index.html">Launch CMMC Assessment</a> <a class="btn" href="https://cmmc.xyberiq.io/reports/cmmc_gap_report_xyberiq.html">View Report Template</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2>About Us</h2>
+        <div class="grid">
+          <article class="card"><h3>Mission</h3><p class="mini">Empower every organization to achieve and sustain cybersecurity compliance with clarity, speed, and integrity—turning regulations into repeatable habits that protect people and propel the business.</p></article>
+          <article class="card"><h3>How We Work</h3><p class="mini">Short, role‑based lessons + self‑assessments produce living reports, prioritized actions, and auditor‑ready evidence.</p></article>
+          <article class="card"><h3>Security & Privacy</h3><p class="mini">Least‑privilege access, encryption in transit/at rest, data minimization, and documented retention.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <div>
-      <img src="/assets/Logo_dark.png" alt="XyberIQ Logo" style="height:40px;margin-bottom:10px;" />
-      <p>© <span id="year"></span> XyberIQ. All rights reserved.</p>
-    </div>
-    <div>
-      <h4>Company</h4>
-      <a href="#about">About Us</a><br><a href="#services">Services</a>
-    </div>
-    <div>
-      <h4>Resources</h4>
-      <a href="#resources">Whitepaper</a><br><a href="https://hipaa.xyberiq.io/assessment_hipaa/index.html">HIPAA Readiness</a>
-    </div>
-    <div>
-      <h4>Legal</h4>
-      <a href="/privacy-policy.html">Privacy Policy</a><br><a href="/terms-and-conditions.html">Terms & Conditions</a>
+    <div class="container foot">
+      <div>
+        <img src="/assets/XyberIQ-Logo.png" alt="XyberIQ Logo" style="height:40px;margin-bottom:8px"/>
+        <p class="mini">© <span id="year"></span> XyberIQ. All rights reserved.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <p><a href="#about">About Us</a><br><a href="#services">Services</a><br><a href="#industry">Industry</a></p>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <p><a href="#resources">Whitepaper</a><br><a href="https://hipaa.xyberiq.io/assessment_hipaa/index.html">HIPAA Readiness</a><br><a href="https://cmmc.xyberiq.io/assessment/index.html">CMMC Readiness</a></p>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <p><a href="/privacy.html">Privacy Policy</a><br><a href="/terms.html">Terms & Conditions</a></p>
+      </div>
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle (accessible)
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('site-nav');
+    function setNav(open){
+      nav.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open && window.innerWidth < 921 ? 'hidden' : '';
+    }
+    toggle.addEventListener('click', ()=> setNav(!nav.classList.contains('open')));
+    // Close on escape
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') setNav(false); });
+    // Close when clicking a link on mobile
+    nav.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> setNav(false)));
+  </script>
 </body>
 </html>
