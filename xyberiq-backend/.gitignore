@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+.env
+
+# Distribution / build
+build/
+dist/
+*.egg-info/
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.idea/
+.vscode/
+
+# Local tooling
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+
+# Docker
+postgres-data/
+redis-data/
