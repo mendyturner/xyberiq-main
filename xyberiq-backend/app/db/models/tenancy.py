@@ -83,7 +83,7 @@ class User(UUIDPrimaryKeyMixin, TimestampMixin, TenantScopedMixin, SoftDeleteMix
         "User", remote_side="User.id", back_populates="direct_reports"
     )
     direct_reports: Mapped[list["User"]] = relationship(
-        "User", back_populates="manager", cascade="all,delete"
+        "User", back_populates="manager", passive_deletes=True
     )
     roles: Mapped[list["UserRole"]] = relationship("UserRole", back_populates="user")
 
